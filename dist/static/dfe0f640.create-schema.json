@@ -1,0 +1,117 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 80
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Phrase courte qui s'affiche en gros (ex: « Allergiques, anticipez vos sorties. »)",
+        "name": "titre",
+        "type": "string"
+      },
+      {
+        "description": "Petit badge coloré en haut à gauche (ex: « SPÉCIAL ALLERGIE »). Optionnel.",
+        "name": "badge",
+        "type": "string",
+        "title": "Étiquette"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Terra (orange terracotta)",
+              "value": "terra"
+            },
+            {
+              "title": "Green (vert sapin)",
+              "value": "green"
+            },
+            {
+              "title": "Ocre (doré)",
+              "value": "ocre"
+            },
+            {
+              "title": "Terra deep (orange profond)",
+              "value": "terraDeep"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "terra",
+        "name": "badgeColor",
+        "type": "string",
+        "title": "Couleur de l'étiquette"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 200
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Phrase de description (1-2 phrases sobres).",
+        "name": "commentaire",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Format carré idéal. Fond clair de préférence.",
+        "name": "image",
+        "type": "image",
+        "title": "Photo du produit"
+      },
+      {
+        "initialValue": 1,
+        "description": "1 = en premier sur la home, 2 = en deuxième, etc.",
+        "name": "ordre",
+        "type": "number",
+        "title": "Ordre d'affichage"
+      },
+      {
+        "initialValue": true,
+        "description": "Décocher pour cacher la promo sans la supprimer.",
+        "name": "publie",
+        "type": "boolean",
+        "title": "Publié sur la home"
+      }
+    ],
+    "name": "promo",
+    "type": "document",
+    "title": "Mise en avant"
+  }
+]
