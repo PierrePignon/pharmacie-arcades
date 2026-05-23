@@ -555,23 +555,3 @@ function ServicesList() {
     </div>
   )
 }
-      {SERVICES.map((s, i) => (
-        <div key={i} className="flex items-start gap-6 py-7" style={{ borderTop: '1px solid var(--cream-deep)' }}>
-          <div className="ff-display italic text-2xl font-light pt-1 flex-shrink-0 w-10" style={{ color: 'var(--terra)' }}>
-            {String(i + 1).padStart(2, '0')}
-          </div>
-          <div className="flex-1">
-            <h3 className="ff-display text-xl font-medium mb-2" style={{ color: 'var(--ink)' }}>{s.title}</h3>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--ink-mid)' }}>{s.desc}</p>
-            {s.mode === 'rdv' ? (
-              <ServiceRdvButton preset={(s as any).preset} />
-            ) : (
-              <span className="eyebrow" style={{ color: 'var(--terra)', fontSize: 10 }}>SANS RENDEZ-VOUS</span>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
