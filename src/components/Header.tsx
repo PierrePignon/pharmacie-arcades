@@ -13,11 +13,13 @@ export default function Header() {
   }, [])
   return (
     <header
-      className="sticky top-0 z-40 transition-all"
+      data-scrolled={scrolled ? 'true' : 'false'}
+      className="sticky top-0 z-40 transition-all duration-500"
       style={{
         background: scrolled ? 'rgba(244,236,216,0.96)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--cream-deep)' : '1px solid transparent',
+        paddingTop: scrolled ? undefined : undefined,
       }}
     >
       <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
@@ -33,14 +35,14 @@ export default function Header() {
           </span>
         </a>
         <nav className="hidden lg:flex items-center gap-8 text-sm font-medium" style={{ color: scrolled ? 'var(--ink)' : 'var(--cream)' }}>
-          <a href="#gammes" className="link-underline">Nos gammes</a>
-          <a href="#services" className="link-underline">Services</a>
-          <a href="#equipe" className="link-underline">L'équipe</a>
-          <a href="#contact" className="link-underline">Accès</a>
+          <a href="#gammes" className="nav-link link-underline">Nos gammes</a>
+          <a href="#services" className="nav-link link-underline">Services</a>
+          <a href="#equipe" className="nav-link link-underline">L'équipe</a>
+          <a href="#contact" className="nav-link link-underline">Accès</a>
         </nav>
         <button
           onClick={() => openRdv()}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 shadow-lg"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 shadow-lg transition-all duration-300 btn-glow"
           style={{ background: 'var(--terra)', color: 'var(--cream)' }}
         >
           Prendre RDV

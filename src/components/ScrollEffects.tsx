@@ -19,13 +19,14 @@ export function ScrollProgress() {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, right: 0,
-      height: 2, zIndex: 100, background: 'rgba(0,0,0,0.06)',
+      height: 3, zIndex: 100, background: 'rgba(0,0,0,0.04)',
       pointerEvents: 'none',
     }}>
       <div style={{
         height: '100%',
         width: `${progress * 100}%`,
-        background: 'linear-gradient(90deg, var(--terra) 0%, var(--ocre) 100%)',
+        background: 'linear-gradient(90deg, var(--terra) 0%, var(--ocre) 60%, var(--green-light) 100%)',
+        boxShadow: '0 0 12px rgba(181,87,31,0.45)',
         transition: 'width .08s linear',
       }} />
     </div>

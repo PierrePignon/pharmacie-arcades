@@ -1,10 +1,14 @@
 import Header from '@/components/Header'
+import HeroSection from '@/components/HeroSection'
+import SiteChrome from '@/components/SiteChrome'
+import ParallaxImage from '@/components/ParallaxImage'
+import ParallaxBand from '@/components/ParallaxBand'
 import { RdvProvider } from '@/components/RdvModal'
 import ContactFAB from '@/components/ContactFAB'
 import StatusBadge from '@/components/StatusBadge'
 import ServiceRdvButton from '@/components/ServiceRdvButton'
 import Reveal from '@/components/Reveal'
-import { ScrollProgress, AnimatedNumber, MagneticButton, TiltCard } from '@/components/ScrollEffects'
+import { ScrollProgress, TiltCard } from '@/components/ScrollEffects'
 import { PHARMA, UNIVERS, SERVICES, HORAIRES, GALLERY, EQUIPE, wa } from '@/lib/constants'
 import { getPromosFromSheet } from '@/lib/sheet'
 
@@ -55,6 +59,7 @@ export default async function Home() {
   return (
     <RdvProvider>
       <ScrollProgress />
+      <SiteChrome />
       {/* Top bar */}
       <div className="hidden md:block text-xs" style={{ background: 'var(--ink)', color: 'var(--cream)' }}>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-2.5 flex items-center justify-between">
@@ -73,61 +78,7 @@ export default async function Home() {
 
       <Header />
 
-      {/* HERO */}
-      <section className="relative" style={{ marginTop: '-84px' }}>
-        <div className="relative h-screen min-h-[720px] max-h-[1100px] overflow-hidden">
-          <div className="absolute inset-0 hero-photo kenburns-slow" />
-          <div className="absolute inset-0"
-            style={{ background: 'linear-gradient(180deg, rgba(26,15,8,0.6) 0%, rgba(26,15,8,0.1) 28%, rgba(26,15,8,0) 50%, rgba(26,15,8,0.7) 100%)' }} />
-          <div className="absolute inset-0 flex flex-col">
-            <div className="flex-1" />
-            <div className="max-w-[1500px] mx-auto w-full px-6 lg:px-10 pb-20 lg:pb-28">
-              <div className="grid lg:grid-cols-12 gap-8 items-end">
-                <div className="lg:col-span-8">
-                  <StatusBadge variant="hero" />
-                  {/* Titre en mode signature classique, plus petit et italique pour effet "tampon manuscrit" */}
-                  <h1 className="h-mega" style={{ color: 'var(--cream)', fontSize: 'clamp(3.5rem, 8vw, 8.5rem)', letterSpacing: '-0.025em' }}>
-                    Pharmacie<br/>
-                    <em style={{ color: 'var(--green-light)' }}>des Arcades</em>
-                    <span style={{ display: 'block', fontFamily: 'Inter, sans-serif', fontStyle: 'normal', fontWeight: 400, fontSize: '0.16em', marginTop: '1.2em', letterSpacing: '0.3em', opacity: 0.85, textTransform: 'uppercase' }}>{PHARMA.city} · Provence</span>
-                  </h1>
-                </div>
-                <div className="lg:col-span-4 lg:pb-3">
-                  <p className="ff-display text-xl leading-relaxed mb-7 text-pretty" style={{ color: 'var(--cream)', opacity: 0.92, fontWeight: 300 }}>
-                    {PHARMA.address}, Châteauneuf-le-Rouge. Conseil pharmaceutique, entretiens, parapharmacie sélectionnée. Officine indépendante depuis {PHARMA.since}
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <MagneticButton strength={0.18}>
-                      <a href={wa("Bonjour, j'ai une question rapide :")} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-semibold text-sm shadow-xl hover:shadow-2xl transition-shadow"
-                        style={{ background: 'var(--whatsapp)', color: 'white' }}>
-                        Une question
-                      </a>
-                    </MagneticButton>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="border-y" style={{ background: 'var(--cream)', borderColor: 'var(--cream-deep)' }}>
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-12 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6">
-            {[
-              { n: PHARMA.since.toString(), l: "depuis\nl'ouverture" },
-              { n: PHARMA.rating, l: `/5 sur Google\n${PHARMA.reviews} avis` },
-              { n: '5', l: "membres\nde l'équipe" },
-              { n: '5', l: 'univers\nparapharmacie' },
-            ].map((s, i) => (
-              <div key={i} className="flex items-baseline gap-3">
-                <AnimatedNumber value={s.n} className="ff-display italic leading-none" style={{ color: 'var(--terra)', fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 500 }} />
-                <span className="eyebrow whitespace-pre-line" style={{ color: 'var(--ink-mid)', fontSize: 10 }}>{s.l}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Bandeau horaires + pharmacie de garde */}
       <section className="py-12 lg:py-16" style={{ background: 'var(--ink)', color: 'var(--cream)' }}>
@@ -179,8 +130,9 @@ export default async function Home() {
       </section>
 
       {/* GAMMES — Lookbook */}
-      <section id="gammes" className="py-28 lg:py-40" style={{ background: 'var(--cream)' }}>
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+      <section id="gammes" className="py-28 lg:py-40 relative overflow-hidden" style={{ background: 'var(--cream)' }}>
+        <div className="section-orb section-orb-terra" style={{ top: '10%', left: '-8%', background: 'rgba(28,79,56,0.1)' }} aria-hidden />
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-10 relative">
           <div className="grid lg:grid-cols-12 gap-10 mb-24 items-end">
             <div className="lg:col-span-7">
               <span className="eyebrow" style={{ color: 'var(--terra)' }}>— NOS UNIVERS</span>
@@ -199,22 +151,22 @@ export default async function Home() {
           {UNIVERS.map((u, idx) => (
             <Reveal key={u.num} className="grid lg:grid-cols-12 gap-10 lg:gap-12 mb-32 last:mb-0">
               <div className={`lg:col-span-5 ${u.reverse ? 'lg:order-2' : ''}`}>
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden relative"
-                  style={{ backgroundImage: `url('${u.bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,15,8,0.5), transparent 55%)' }} />
-                  <div className={`absolute top-5 ${u.reverse ? 'right-5' : 'left-5'} rounded-full flex items-center justify-center`}
+                <ParallaxImage className="aspect-[4/5] rounded-2xl relative">
+                  <div className="img-parallax-bg" style={{ backgroundImage: `url('${u.bgImage}')` }} />
+                  <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to top, rgba(26,15,8,0.5), transparent 55%)' }} />
+                  <div className={`absolute top-5 z-20 ${u.reverse ? 'right-5' : 'left-5'} rounded-full flex items-center justify-center`}
                     style={{ background: 'var(--cream)', color: 'var(--ink)', width: 64, height: 64, boxShadow: '0 8px 24px -8px rgba(26,15,8,0.4)' }}>
                     <span className="ff-display italic leading-none" style={{ fontSize: 28, fontWeight: 500 }}>
                       {u.num}
                     </span>
                   </div>
-                  <div className="absolute bottom-6 left-6 right-6">
+                  <div className="absolute bottom-6 left-6 right-6 z-20">
                     <span className="eyebrow rounded-full px-3 py-1.5 inline-block"
                       style={{ background: 'rgba(244,236,216,0.2)', color: 'var(--cream)', backdropFilter: 'blur(8px)', fontSize: 10 }}>
                       UNIVERS
                     </span>
                   </div>
-                </div>
+                </ParallaxImage>
               </div>
 
               <div className={`lg:col-span-7 ${u.reverse ? 'lg:order-1' : ''}`}>
@@ -246,13 +198,11 @@ export default async function Home() {
 
       {/* HISTOIRE */}
       <section className="relative">
-        <div className="h-[50vh] min-h-[400px] relative overflow-hidden">
-          <div className="absolute inset-0 hero-photo" style={{ backgroundPosition: 'center 40%' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(26,15,8,0.2) 0%, rgba(26,15,8,0.5) 100%)' }} />
-          <div className="absolute bottom-8 left-0 right-0 max-w-[1500px] mx-auto px-6 lg:px-10">
+        <ParallaxBand src="/photos/officine/facade.webp" alt="Façade Pharmacie des Arcades" position="center 40%">
+          <div className="absolute bottom-8 left-0 right-0 max-w-[1500px] mx-auto px-6 lg:px-10 z-10">
             <span className="eyebrow" style={{ color: 'var(--ocre)' }}>— L'OFFICINE</span>
           </div>
-        </div>
+        </ParallaxBand>
         <div className="py-24 lg:py-32" style={{ background: 'var(--cream)' }}>
           <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16">
             <div className="lg:col-span-6">
@@ -266,7 +216,7 @@ export default async function Home() {
                 Ouverte en {PHARMA.since} sur la place Auguste Baret, l'officine est reprise en {PHARMA.sinceTitulaires} par Cécile et Pierre-François Pignon. L'équipe accompagne les patients au quotidien sur l'ensemble des spécialités : conseil pharmaceutique, vaccination, grossesse, orthopédie, parapharmacie.
               </p>
               <p className="text-base leading-relaxed">
-                Bord de Nationale 7, parking gratuit à 20 mètres de l'enseigne — un accès très facile en voiture, rare pour une pharmacie de village.
+                Bord de Nationale 7, parking gratuit à 50 mètres de l'enseigne — un accès très facile en voiture, rare pour une pharmacie de village.
               </p>
               <div className="flex items-center gap-4 pt-6" style={{ borderTop: '1px solid var(--cream-deep)' }}>
                 <hr className="w-12" style={{ borderColor: 'var(--terra)', borderWidth: 1 }} />
@@ -298,9 +248,9 @@ export default async function Home() {
               const imgUrl = p.image?.url || ''
               const delay = ((idx % 4) as 0 | 1 | 2 | 3)
               return (
-                <Reveal key={p.id} delay={delay} className="rounded-2xl overflow-hidden hover-lift flex flex-col" >
-                <article style={{ background: 'white' }}>
-                  <div className="aspect-square relative overflow-hidden promo-bg" style={{ backgroundImage: `url('${imgUrl}')` }}>
+                <Reveal key={p.id} delay={delay} className="flex flex-col">
+                <article className="promo-card">
+                  <div className="aspect-square relative overflow-hidden promo-bg promo-img" style={{ backgroundImage: `url('${imgUrl}')` }}>
                     {p.badge && (
                       <span className="absolute top-4 left-4 px-3 py-1 rounded-full eyebrow"
                         style={{ background: BADGE_COLORS[p.badgeColor || 'terra'], color: 'var(--cream)', fontSize: 9 }}>
@@ -350,8 +300,8 @@ export default async function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {equipe.map((p: any, i: number) => (
               <Reveal key={p.id} delay={((i % 4) as 0 | 1 | 2 | 3)}>
-              <article className="flex flex-col" style={{ marginTop: i % 2 === 1 ? '2.5rem' : '0', opacity: p.upcoming ? 0.55 : 1 }}>
-                <div className={`aspect-[4/5] rounded-2xl overflow-hidden mb-5 relative shadow-md ${AVATAR_CLASS[p.colorScheme] || 'avatar-1'} flex items-end justify-center`}>
+              <article className="team-card flex flex-col" style={{ marginTop: i % 2 === 1 ? '2.5rem' : '0', opacity: p.upcoming ? 0.55 : 1 }}>
+                <div className={`team-portrait aspect-[4/5] rounded-2xl overflow-hidden mb-5 relative shadow-md ${AVATAR_CLASS[p.colorScheme] || 'avatar-1'} flex items-end justify-center`}>
                   <svg viewBox="0 0 280 360" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
                     <path d="M 60 360 L 60 290 Q 80 250 140 250 Q 200 250 220 290 L 220 360 Z" fill="#3A2F1E" opacity="0.85" />
                     <rect x="125" y="220" width="30" height="40" fill="#F2D6B8" opacity="0.7" />
@@ -390,12 +340,11 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+          <div className="gallery-bento">
             {GALLERY.map((g, i) => (
-              <Reveal key={g.src} delay={((i % 4) as 0 | 1 | 2 | 3)} className="aspect-[4/3] rounded-2xl overflow-hidden relative hover-lift">
-                <div className="absolute inset-0" style={{ backgroundImage: `url('${g.src}')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,15,8,0.45), transparent 60%)' }} />
-                <div className="absolute bottom-5 left-5">
+              <Reveal key={g.src} delay={((i % 4) as 0 | 1 | 2 | 3)} className="gallery-item">
+                <div className="gallery-bg" style={{ backgroundImage: `url('${g.src}')` }} />
+                <div className="absolute bottom-5 left-5 z-10">
                   <span className="eyebrow rounded-full px-3 py-1.5 inline-block" style={{ background: 'rgba(244,236,216,0.92)', color: 'var(--ink)', fontSize: 9 }}>
                     {g.label}
                   </span>
@@ -417,7 +366,7 @@ export default async function Home() {
             <div>
               {[
                 { label: 'Adresse', value: `${PHARMA.address}, ${PHARMA.postal} ${PHARMA.city}` },
-                { label: 'Accès en voiture', value: 'Bord de Nationale 7, parking gratuit à 20 mètres de l\'enseigne.' },
+                { label: 'Accès en voiture', value: 'Bord de Nationale 7, parking gratuit à 50 mètres de l\'enseigne.' },
                 { label: 'Téléphone', value: PHARMA.phone, link: `tel:${PHARMA.phoneTel}` },
                 { label: 'WhatsApp / SMS', value: `${PHARMA.mobile} — pour vos questions rapides` },
                 { label: 'Horaires', value: 'Lun–Ven 9h–12h15 · 15h–19h | Sam 9h–12h15' },
@@ -537,8 +486,8 @@ function ServicesList() {
   return (
     <div className="grid md:grid-cols-2 gap-x-12 gap-y-0">
       {SERVICES.map((s, i) => (
-        <div key={i} className="flex items-start gap-6 py-7" style={{ borderTop: '1px solid var(--cream-deep)' }}>
-          <div className="ff-display italic text-2xl font-light pt-1 flex-shrink-0 w-10" style={{ color: 'var(--terra)' }}>
+        <div key={i} className="service-row flex items-start gap-6 py-7" style={{ borderTop: '1px solid var(--cream-deep)' }}>
+          <div className="service-num ff-display italic text-2xl font-light pt-1 flex-shrink-0 w-10" style={{ color: 'var(--terra)' }}>
             {String(i + 1).padStart(2, '0')}
           </div>
           <div className="flex-1">
