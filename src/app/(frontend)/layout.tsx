@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     ],
     apple: '/photos/logo/logo-400.png',
   },
+  verification: {
+    google: '0L6kFo2mrj_0u9MwLeKK0cIzvtZQkUrR0lEmzwkAb9Y',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
