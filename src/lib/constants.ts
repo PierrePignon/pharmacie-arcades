@@ -50,7 +50,7 @@ export const UNIVERS = [
     eyebrow: 'PARAPHARMACIE',
     title: 'Visage et corps',
     titleHtml: 'Visage<br>et <em style="color: var(--terra);">corps</em>',
-    desc: "Références essentielles pour peaux sensibles, atopiques, sèches ou mixtes. Laboratoires français reconnus, formulations éprouvées.",
+    desc: "Références essentielles pour peaux sensibles, atopiques, sèches ou mixtes. Laboratoires français reconnus.",
     color: 'terra',
     bgImage: '/photos/MainPhoto/soinDuVisageEtDuCorp.png',
     reverse: true,
