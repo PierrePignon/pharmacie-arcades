@@ -6,25 +6,21 @@ type Status = { open: boolean; label: string; sub: string }
 function computeStatus(now: Date): Status {
   const day = now.getDay()
   const mins = now.getHours() * 60 + now.getMinutes()
-  // 9h-12h15 puis 15h-19h
-  const M_OPEN = 9 * 60, M_CLOSE = 12 * 60 + 15, A_OPEN = 15 * 60, A_CLOSE = 19 * 60
+  // 9h-12h puis 15h-19h
+  const M_OPEN = 9 * 60, M_CLOSE = 12 * 60, A_OPEN = 15 * 60, A_CLOSE = 19 * 60
   if (day === 0) return { open: false, label: 'Fermée', sub: 'Dimanche' }
   if (day === 6) {
-    if (mins >= M_OPEN && mins < M_CLOSE) return { open: true, label: 'Ouverte', sub: 'Ferme à 12h15' }
+    if (mins >= M_OPEN && mins < M_CLOSE) return { open: true, label: 'Ouverte', sub: 'Ferme à 12h' }
     return { open: false, label: 'Fermée', sub: 'Samedi après-midi' }
   }
-  if (mins >= M_OPEN && mins < M_CLOSE) return { open: true, label: 'Ouverte', sub: 'Ferme à 12h15' }
+  if (mins >= M_OPEN && mins < M_CLOSE) return { open: true, label: 'Ouverte', sub: 'Ferme à 12h' }
   if (mins >= A_OPEN && mins < A_CLOSE) return { open: true, label: 'Ouverte', sub: 'Ferme à 19h' }
   if (mins < M_OPEN) return { open: false, label: 'Fermée', sub: 'Ouvre à 9h' }
   if (mins < A_OPEN) return { open: false, label: 'Pause méridienne', sub: 'Ouvre à 15h' }
   return { open: false, label: 'Fermée', sub: 'Ouvre demain à 9h' }
 }
 
-export default function StatusBadge({
-  variant = 'inline',
-}: {
-  variant?: 'inline' | 'hero'
-}) {
+export default function StatusBadge({ variant = 'inline' }: { variant?: 'inline' | 'hero' }) {
   const [status, setStatus] = useState<Status>(() => computeStatus(new Date()))
   useEffect(() => {
     const tick = () => setStatus(computeStatus(new Date()))
@@ -37,14 +33,7 @@ export default function StatusBadge({
 
   if (variant === 'hero') {
     return (
-      <div
-        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-10 backdrop-blur-md"
-        style={{
-          background: 'rgba(244,236,216,0.15)',
-          color: 'var(--cream)',
-          border: '1px solid rgba(244,236,216,0.3)',
-        }}
-      >
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-10 backdrop-blur-md" style={{ background: 'rgba(244,236,216,0.15)', color: 'var(--cream)', border: '1px solid rgba(244,236,216,0.3)' }}>
         <span className="w-1.5 h-1.5 rounded-full" style={{ background: dotColor }} />
         <span className="eyebrow" style={{ fontSize: 10 }}>
           {status.label.toUpperCase()} · {status.sub.toUpperCase()}

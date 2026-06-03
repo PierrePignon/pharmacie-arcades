@@ -129,104 +129,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* GAMMES — Lookbook */}
-      <section id="gammes" className="py-28 lg:py-40 relative overflow-hidden" style={{ background: 'var(--cream)' }}>
-        <div className="section-orb section-orb-terra" style={{ top: '10%', left: '-8%', background: 'rgba(28,79,56,0.1)' }} aria-hidden />
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-10 relative">
-          <div className="grid lg:grid-cols-12 gap-10 mb-24 items-end">
-            <div className="lg:col-span-7">
-              <span className="eyebrow" style={{ color: 'var(--terra)' }}>— NOS UNIVERS</span>
-              <h2 className="h-section text-balance mt-5" style={{ color: 'var(--ink)' }}>
-                Nos univers<br/>
-                <em style={{ color: 'var(--terra)' }}>parapharmacie</em>
-              </h2>
-            </div>
-            <div className="lg:col-span-5 lg:pb-4">
-              <p className="ff-display text-xl leading-relaxed text-pretty" style={{ color: 'var(--ink-mid)', fontWeight: 300 }}>
-                Une sélection établie par l'équipe sur des critères de formulation, d'origine et de qualité de service. Chaque référence présentée ici est disponible à l'officine.
-              </p>
-            </div>
-          </div>
-
-          {UNIVERS.map((u, idx) => (
-            <Reveal key={u.num} className="grid lg:grid-cols-12 gap-10 lg:gap-12 mb-32 last:mb-0">
-              <div className={`lg:col-span-5 ${u.reverse ? 'lg:order-2' : ''}`}>
-                <ParallaxImage className="aspect-[4/5] rounded-2xl relative">
-                  <div className="img-parallax-bg" style={{ backgroundImage: `url('${u.bgImage}')` }} />
-                  <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to top, rgba(26,15,8,0.5), transparent 55%)' }} />
-                  <div className={`absolute top-5 z-20 ${u.reverse ? 'right-5' : 'left-5'} rounded-full flex items-center justify-center`}
-                    style={{ background: 'var(--cream)', color: 'var(--ink)', width: 64, height: 64, boxShadow: '0 8px 24px -8px rgba(26,15,8,0.4)' }}>
-                    <span className="ff-display italic leading-none" style={{ fontSize: 28, fontWeight: 500 }}>
-                      {u.num}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-6 left-6 right-6 z-20">
-                    <span className="eyebrow rounded-full px-3 py-1.5 inline-block"
-                      style={{ background: 'rgba(244,236,216,0.2)', color: 'var(--cream)', backdropFilter: 'blur(8px)', fontSize: 10 }}>
-                      UNIVERS
-                    </span>
-                  </div>
-                </ParallaxImage>
-              </div>
-
-              <div className={`lg:col-span-7 ${u.reverse ? 'lg:order-1' : ''}`}>
-                <span className="eyebrow" style={{ color: `var(--${u.color})` }}>N° {u.num} — {u.eyebrow}</span>
-                <h3 className="h-section text-balance mt-4 mb-4" style={{ color: 'var(--ink)', fontSize: 'clamp(2.25rem, 4vw, 3.5rem)' }}
-                  dangerouslySetInnerHTML={{ __html: u.titleHtml }} />
-                <p className="ff-display text-base leading-relaxed text-pretty mb-8 max-w-md" style={{ color: 'var(--ink-mid)', fontWeight: 300 }}>
-                  {u.desc}
-                </p>
-
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-8">
-                  {u.marques.map((m) => (
-                    <TiltCard key={m.name} max={8} className="brand-card">
-                      <img className="product" src={m.img} alt={m.name} loading="lazy" />
-                      <span className="brand-name">{m.name}</span>
-                    </TiltCard>
-                  ))}
-                </div>
-
-                <a href={wa(`Bonjour, je cherche à savoir si vous avez en stock : `)} target="_blank" rel="noopener noreferrer"
-                  className="btn-outline inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold ui-sans">
-                  Demander la disponibilité
-                </a>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* HISTOIRE */}
-      <section className="relative">
-        <ParallaxBand src="/photos/officine/facade.webp" alt="Façade Pharmacie des Arcades" position="center 40%">
-          <div className="absolute bottom-8 left-0 right-0 max-w-[1500px] mx-auto px-6 lg:px-10 z-10">
-            <span className="eyebrow" style={{ color: 'var(--ocre)' }}>— L'OFFICINE</span>
-          </div>
-        </ParallaxBand>
-        <div className="py-24 lg:py-32" style={{ background: 'var(--cream)' }}>
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16">
-            <div className="lg:col-span-6">
-              <span className="eyebrow" style={{ color: 'var(--terra)' }}>— PLACE AUGUSTE BARET</span>
-              <h2 className="h-section text-balance mt-5" style={{ color: 'var(--ink)' }}>
-                L'officine
-              </h2>
-            </div>
-            <div className="lg:col-span-6 space-y-5 text-pretty" style={{ color: 'var(--ink-mid)' }}>
-              <p className="text-base leading-relaxed">
-                Ouverte en {PHARMA.since} sur la place Auguste Baret, l'officine est reprise en {PHARMA.sinceTitulaires} par Cécile et Pierre-François Pignon. L'équipe accompagne les patients au quotidien sur l'ensemble des spécialités : conseil pharmaceutique, vaccination, grossesse, orthopédie, parapharmacie.
-              </p>
-              <p className="text-base leading-relaxed">
-                Bord de Nationale 7, parking gratuit à 50 mètres de l'enseigne — un accès très facile en voiture, rare pour une pharmacie de village.
-              </p>
-              <div className="flex items-center gap-4 pt-6" style={{ borderTop: '1px solid var(--cream-deep)' }}>
-                <hr className="w-12" style={{ borderColor: 'var(--terra)', borderWidth: 1 }} />
-                <span className="ff-display italic text-lg" style={{ color: 'var(--terra)' }}>Cécile et Pierre-François Pignon</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* PROMOS */}
       <section className="py-28 lg:py-36" style={{ background: 'var(--cream-deep)' }}>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
@@ -278,6 +180,104 @@ export default async function Home() {
       </section>
 
       <ServicesSection />
+
+      {/* GAMMES — Lookbook */}
+      <section id="gammes" className="py-28 lg:py-40 relative overflow-hidden" style={{ background: 'var(--cream)' }}>
+        <div className="section-orb section-orb-terra" style={{ top: '10%', left: '-8%', background: 'rgba(28,79,56,0.1)' }} aria-hidden />
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-10 relative">
+          <div className="grid lg:grid-cols-12 gap-10 mb-24 items-end">
+            <div className="lg:col-span-7">
+              <span className="eyebrow" style={{ color: 'var(--terra)' }}>— NOS UNIVERS</span>
+              <h2 className="h-section text-balance mt-5" style={{ color: 'var(--ink)' }}>
+                Nos univers<br/>
+                <em style={{ color: 'var(--terra)' }}>parapharmacie</em>
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:pb-4">
+              <p className="ff-display text-xl leading-relaxed text-pretty" style={{ color: 'var(--ink-mid)', fontWeight: 300 }}>
+                Une sélection établie par l'équipe sur des critères de formulation, d'origine et de qualité de service. Chaque référence présentée ici est disponible à l'officine.
+              </p>
+            </div>
+          </div>
+
+          {UNIVERS.map((u, idx) => (
+            <Reveal key={u.num} className="grid lg:grid-cols-12 gap-10 lg:gap-12 mb-32 last:mb-0">
+              <div className={`lg:col-span-5 ${u.reverse ? 'lg:order-2' : ''}`}>
+                <ParallaxImage className="aspect-[4/5] rounded-2xl relative">
+                  <div className="img-parallax-bg" style={{ backgroundImage: `url('${u.bgImage}')` }} />
+                  <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to top, rgba(26,15,8,0.5), transparent 55%)' }} />
+                  <div className={`absolute top-5 z-20 ${u.reverse ? 'right-5' : 'left-5'} rounded-full flex items-center justify-center`}
+                    style={{ background: 'var(--cream)', color: 'var(--ink)', width: 64, height: 64, boxShadow: '0 8px 24px -8px rgba(26,15,8,0.4)' }}>
+                    <span className="ff-display italic leading-none" style={{ fontSize: 28, fontWeight: 500 }}>
+                      {u.num}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-6 left-6 right-6 z-20">
+                    <span className="eyebrow rounded-full px-3 py-1.5 inline-block"
+                      style={{ background: 'rgba(244,236,216,0.2)', color: 'var(--cream)', backdropFilter: 'blur(8px)', fontSize: 10 }}>
+                      UNIVERS
+                    </span>
+                  </div>
+                </ParallaxImage>
+              </div>
+
+              <div className={`lg:col-span-7 ${u.reverse ? 'lg:order-1' : ''}`}>
+                <span className="eyebrow" style={{ color: `var(--${u.color})` }}>N° {u.num} — {u.eyebrow}</span>
+                <h3 className="h-section text-balance mt-4 mb-4" style={{ color: 'var(--ink)', fontSize: 'clamp(2.25rem, 4vw, 3.5rem)' }}
+                  dangerouslySetInnerHTML={{ __html: u.titleHtml }} />
+                <p className="ff-display text-base leading-relaxed text-pretty mb-8 max-w-md" style={{ color: 'var(--ink-mid)', fontWeight: 300 }}>
+                  {u.desc}
+                </p>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+                  {u.marques.map((m) => (
+                    <TiltCard key={m.name} max={8} className="brand-card">
+                      <img className="product" src={m.img} alt={m.name} loading="lazy" />
+                      <span className="brand-name">{m.name}</span>
+                    </TiltCard>
+                  ))}
+                </div>
+
+                <a href={wa(`Bonjour, je cherche à savoir si vous avez en stock : `)} target="_blank" rel="noopener noreferrer"
+                  className="btn-outline inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold ui-sans">
+                  Demander la disponibilité
+                </a>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* HISTOIRE */}
+      <section className="relative">
+        <ParallaxBand src="/photos/officine/facade.webp" alt="Façade Pharmacie des Arcades" position="center 40%">
+          <div className="absolute bottom-8 left-0 right-0 max-w-[1500px] mx-auto px-6 lg:px-10 z-10">
+            <span className="eyebrow" style={{ color: 'var(--ocre)' }}>— L'OFFICINE</span>
+          </div>
+        </ParallaxBand>
+        <div className="py-24 lg:py-32" style={{ background: 'var(--cream)' }}>
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16">
+            <div className="lg:col-span-6">
+              <span className="eyebrow" style={{ color: 'var(--terra)' }}>— PLACE AUGUSTE BARET</span>
+              <h2 className="h-section text-balance mt-5" style={{ color: 'var(--ink)' }}>
+                L'officine
+              </h2>
+            </div>
+            <div className="lg:col-span-6 space-y-5 text-pretty" style={{ color: 'var(--ink-mid)' }}>
+              <p className="text-base leading-relaxed">
+                Ouverte en {PHARMA.since} sur la place Auguste Baret, l'officine est reprise en {PHARMA.sinceTitulaires} par Cécile et Pierre-François Pignon. L'équipe accompagne les patients au quotidien sur l'ensemble des spécialités : conseil pharmaceutique, vaccination, grossesse, orthopédie, parapharmacie.
+              </p>
+              <p className="text-base leading-relaxed">
+                Bord de Nationale 7, parking gratuit à 50 mètres de l'enseigne — un accès très facile en voiture, rare pour une pharmacie de village.
+              </p>
+              <div className="flex items-center gap-4 pt-6" style={{ borderTop: '1px solid var(--cream-deep)' }}>
+                <hr className="w-12" style={{ borderColor: 'var(--terra)', borderWidth: 1 }} />
+                <span className="ff-display italic text-lg" style={{ color: 'var(--terra)' }}>Cécile et Pierre-François Pignon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ÉQUIPE */}
       <section id="equipe" className="py-28 lg:py-36 relative overflow-hidden" style={{ background: 'var(--cream)' }}>
@@ -369,7 +369,7 @@ export default async function Home() {
                 { label: 'Accès en voiture', value: 'Bord de Nationale 7, parking gratuit à 50 mètres de l\'enseigne.' },
                 { label: 'Téléphone', value: PHARMA.phone, link: `tel:${PHARMA.phoneTel}` },
                 { label: 'WhatsApp / SMS', value: `${PHARMA.mobile} — pour vos questions rapides` },
-                { label: 'Horaires', value: 'Lun–Ven 9h–12h15 · 15h–19h | Sam 9h–12h15' },
+                { label: 'Horaires', value: 'Lun–Ven 9h–12h · 15h–19h | Sam 9h–12h' },
               ].map((row, i) => (
                 <div key={i} className="flex gap-5 py-6" style={{ borderTop: '1px solid var(--cream-deep)' }}>
                   <div className="flex-1 pt-1">
@@ -421,7 +421,7 @@ export default async function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-14">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-5">
-                <img src="/photos/logo/logo-400.png" alt="Pharmacie des Arcades" className="rounded-lg" style={{ width: 52, height: 52, objectFit: 'cover' }} />
+                <img src="/photos/logo/newlogo-cross.png" alt="Pharmacie des Arcades" style={{ width: 52, height: 52, objectFit: 'contain' }} />
                 <span className="ff-display text-xl font-medium">{PHARMA.name}</span>
               </div>
               <p className="ff-display leading-relaxed opacity-80 max-w-md" style={{ fontSize: '1.05rem', fontWeight: 300 }}>

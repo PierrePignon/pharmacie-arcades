@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/photos/logo/logo-400.png', type: 'image/png' },
+      { url: '/photos/logo/newlogo-400.png', type: 'image/png' },
     ],
-    apple: '/photos/logo/logo-400.png',
+    apple: '/photos/logo/newlogo-400.png',
   },
   verification: {
     google: '0L6kFo2mrj_0u9MwLeKK0cIzvtZQkUrR0lEmzwkAb9Y',

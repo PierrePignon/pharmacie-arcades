@@ -15,6 +15,8 @@ export default function ParallaxBand({ src, alt = '', position = 'center 40%', c
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
+    // Désactiver le parallax sur mobile (bug d'affichage)
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches) return
     const onScroll = () => {
       const el = ref.current
       if (!el) return

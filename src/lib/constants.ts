@@ -21,8 +21,8 @@ export const wa = (msg: string) =>
   `https://wa.me/${PHARMA.mobileDigits}?text=${encodeURIComponent(msg)}`
 
 export const HORAIRES = [
-  { jour: 'Lun – Ven', creneaux: '09h – 12h15 · 15h – 19h' },
-  { jour: 'Samedi', creneaux: '09h – 12h15' },
+  { jour: 'Lun – Ven', creneaux: '09h – 12h · 15h – 19h' },
+  { jour: 'Samedi', creneaux: '09h – 12h' },
   { jour: 'Dimanche', creneaux: 'Fermée', closed: true },
 ]
 

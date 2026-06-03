@@ -79,8 +79,33 @@ html { scroll-behavior: smooth; }
 @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.06); } }
 .kenburns-slow { animation: kenburns 22s ease-in-out infinite alternate; }
 
-.hero-photo { background-image: url('/photos/officine/facade.webp'); background-size: cover; background-position: center; }
-.hero-photo.kenburns-slow { animation: kenburns 22s ease-in-out infinite alternate; transform-origin: center; }
+.hero-photo {
+  background-image: url('/photos/officine/facade.webp');
+  background-size: cover;
+  /* Mobile : recadré tout à gauche pour voir la pharmacie (pas la boutique d'à côté) */
+  background-position: 15% center;
+}
+@media (min-width: 768px) {
+  .hero-photo { background-position: center; }
+}
+.hero-photo.kenburns-slow { animation: kenburns 22s ease-in-out infinite alternate; transform-origin: 15% center; }
+@media (min-width: 768px) {
+  .hero-photo.kenburns-slow { transform-origin: center; }
+}
+
+/* === MOBILE : désactiver les effets de scroll qui buggent l'affichage === */
+@media (max-width: 767px) {
+  /* Ken burns désactivé */
+  .hero-photo.kenburns-slow { animation: none !important; transform: none !important; }
+  /* Reveal : juste fade léger, pas de translate */
+  .reveal { transform: none !important; transition: opacity .4s ease !important; }
+  /* Tilt 3D désactivé */
+  .brand-card { transform: none !important; }
+  /* Parallax désactivé */
+  [data-parallax], .parallax-bg { transform: none !important; will-change: auto !important; }
+  /* Magnetic button désactivé */
+  .magnetic-wrap { transform: none !important; }
+}
 
 .hover-lift { transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease; }
 .hover-lift:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -20px rgba(45,24,16,0.25); }
@@ -105,21 +130,42 @@ html { scroll-behavior: smooth; }
 .brand-card {
   background: var(--white-warm);
   border: 1px solid var(--cream-deep);
-  aspect-ratio: 1 / 1;
+  /* Mobile : carte plus haute que large pour laisser la place au nom */
+  aspect-ratio: 4 / 5;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-  padding: 14px 12px 12px;
+  padding: 16px 12px 14px;
   transition: transform .3s ease, box-shadow .3s ease;
+  min-height: 0;
+}
+@media (min-width: 640px) {
+  .brand-card { aspect-ratio: 1 / 1; padding: 14px 12px 12px; }
 }
 .brand-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -12px rgba(45,24,16,0.2); }
-.brand-card img.product { flex: 1; width: 78%; max-width: 88%; max-height: 65%; object-fit: contain; margin-top: 6px; mix-blend-mode: multiply; }
+.brand-card img.product {
+  flex: 1 1 0;
+  width: 78%; max-width: 88%;
+  min-height: 0;
+  object-fit: contain;
+  margin-top: 4px;
+  mix-blend-mode: multiply;
+}
 .brand-card .brand-name {
-  font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
-  color: var(--ink); font-size: 13px; text-align: center;
-  padding-top: 8px; margin-top: 6px;
-  border-top: 1px solid var(--cream-deep); width: 100%;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic; font-weight: 500;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  padding-top: 10px; margin-top: 8px;
+  border-top: 1px solid var(--cream-deep);
+  width: 100%;
+  flex-shrink: 0;
+  /* Plus de couper le texte */
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .btn-primary { background: var(--ink); color: var(--cream); border: 1px solid var(--ink); }

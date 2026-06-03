@@ -24,7 +24,7 @@ export default function Header() {
     >
       <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
-          <img src="/photos/logo/logo-400.png" alt="Pharmacie des Arcades" className="flex-shrink-0 rounded-lg" style={{ width: 48, height: 48, objectFit: 'cover' }} />
+          <img src="/photos/logo/newlogo-cross.png" alt="Pharmacie des Arcades" className="flex-shrink-0" style={{ width: 44, height: 44, objectFit: 'contain' }} />
           <span className="flex flex-col leading-tight">
             <span className="ff-display text-[18px] font-medium tracking-tight" style={{ color: scrolled ? 'var(--ink)' : 'var(--cream)' }}>
               Pharmacie des Arcades
