@@ -345,7 +345,7 @@ export default async function Home() {
             </h2>
             <div className="mt-8 mx-auto w-16 h-px" style={{ background: 'var(--ocre)', opacity: 0.5 }} />
             <p className="ff-display italic mt-8 mx-auto max-w-xl text-pretty" style={{ color: 'rgba(244,236,216,0.75)', fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)' }}>
-              Quatre regards sur nos rayons et l'organisation de l'officine, pensée pour faciliter le conseil au quotidien.
+              Quatre regards sur nos rayons et l'organisation de l'officine.
             </p>
           </div>
           <div className="gallery-bento gallery-bento-dark">
