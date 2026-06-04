@@ -43,7 +43,7 @@ export default function Header() {
         <button
           onClick={() => openRdv()}
           className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 shadow-lg transition-all duration-300 btn-glow"
-          style={{ background: 'var(--terra)', color: 'var(--cream)' }}
+          style={{ background: 'var(--green)', color: 'var(--cream)' }}
         >
           Prendre RDV
         </button>

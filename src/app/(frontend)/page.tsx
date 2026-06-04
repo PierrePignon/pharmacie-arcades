@@ -181,6 +181,11 @@ export default async function Home() {
 
       <ServicesSection />
 
+      {/* Séparateur léger entre Services et Univers — ligne fine verticale */}
+      <div className="flex justify-center" style={{ background: 'var(--cream)' }}>
+        <div className="w-px h-20 lg:h-28" style={{ background: 'linear-gradient(180deg, transparent, var(--ocre), transparent)' }} />
+      </div>
+
       {/* GAMMES — Lookbook */}
       <section id="gammes" className="py-28 lg:py-40 relative overflow-hidden" style={{ background: 'var(--cream)' }}>
         <div className="section-orb section-orb-terra" style={{ top: '10%', left: '-8%', background: 'rgba(28,79,56,0.1)' }} aria-hidden />
@@ -250,7 +255,7 @@ export default async function Home() {
 
       {/* HISTOIRE */}
       <section className="relative">
-        <ParallaxBand src="/photos/officine/facade.webp" alt="Façade Pharmacie des Arcades" position="center 40%">
+        <ParallaxBand src="/photos/officine/facade.webp" alt="Façade Pharmacie des Arcades" position="center 70%">
           <div className="absolute bottom-8 left-0 right-0 max-w-[1500px] mx-auto px-6 lg:px-10 z-10">
             <span className="eyebrow" style={{ color: 'var(--ocre)' }}>— L'OFFICINE</span>
           </div>
@@ -280,13 +285,6 @@ export default async function Home() {
       </section>
 
       {/* Diviseur éditorial entre Histoire et Équipe */}
-      <div className="py-10 lg:py-14 flex flex-col items-center" style={{ background: 'var(--cream)' }}>
-        <div className="w-px h-16" style={{ background: 'linear-gradient(180deg, transparent, var(--terra), transparent)' }} />
-        <span className="ff-display italic text-center mt-4 max-w-xl px-6" style={{ color: 'var(--ink-mid)', fontSize: 'clamp(1.1rem, 1.6vw, 1.4rem)' }}>
-          « Une officine, c'est d'abord les visages qui l'animent. »
-        </span>
-      </div>
-
       {/* ÉQUIPE */}
       <section id="equipe" className="py-28 lg:py-36 relative overflow-hidden" style={{ background: 'var(--cream-deep)' }}>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-10 relative">
