@@ -54,8 +54,9 @@ export default function HeroSection() {
           className="absolute inset-0 flex flex-col transition-opacity duration-700"
           style={{ opacity: fade }}
         >
-          <div className="flex-1" />
-          <div className="max-w-[1500px] mx-auto w-full px-6 lg:px-10 pb-20 lg:pb-28">
+          {/* Mobile : titre ancré près du haut (pour ne pas chevaucher l'enseigne sur la photo) ; Desktop : ancré en bas */}
+          <div className="hidden lg:block flex-1" />
+          <div className="max-w-[1500px] mx-auto w-full px-6 lg:px-10 pt-28 lg:pt-0 pb-10 lg:pb-28">
             <div className="grid lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
                 <div className={`hero-stagger ${ready ? 'is-ready' : ''}`}>

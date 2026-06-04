@@ -279,8 +279,16 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Diviseur éditorial entre Histoire et Équipe */}
+      <div className="py-10 lg:py-14 flex flex-col items-center" style={{ background: 'var(--cream)' }}>
+        <div className="w-px h-16" style={{ background: 'linear-gradient(180deg, transparent, var(--terra), transparent)' }} />
+        <span className="ff-display italic text-center mt-4 max-w-xl px-6" style={{ color: 'var(--ink-mid)', fontSize: 'clamp(1.1rem, 1.6vw, 1.4rem)' }}>
+          « Une officine, c'est d'abord les visages qui l'animent. »
+        </span>
+      </div>
+
       {/* ÉQUIPE */}
-      <section id="equipe" className="py-28 lg:py-36 relative overflow-hidden" style={{ background: 'var(--cream)' }}>
+      <section id="equipe" className="py-28 lg:py-36 relative overflow-hidden" style={{ background: 'var(--cream-deep)' }}>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-10 relative">
           <div className="grid lg:grid-cols-12 gap-12 mb-16 items-end">
             <div className="lg:col-span-6">
@@ -324,29 +332,32 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* GALERIE OFFICINE */}
-      <section className="py-28 lg:py-36" style={{ background: 'var(--cream-deep)' }}>
-        <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-12 mb-14 items-end">
-            <div className="lg:col-span-7">
-              <h2 className="h-section text-balance mt-5" style={{ color: 'var(--ink)' }}>
-                L'officine<br/>
-                <em style={{ color: 'var(--terra)' }}>en images</em>
-              </h2>
-            </div>
-            <div className="lg:col-span-5 lg:pb-4">
-              <p className="ff-display text-lg leading-relaxed text-pretty" style={{ color: 'var(--ink-mid)', fontWeight: 300 }}>
-                Un aperçu des rayons et de l'organisation de l'officine. Une présentation par univers, pensée pour faciliter le conseil.
-              </p>
-            </div>
+      {/* GALERIE OFFICINE — style exposition */}
+      <section className="py-28 lg:py-40 relative" style={{ background: 'var(--ink)', color: 'var(--cream)' }}>
+        {/* Texture subtile en haut pour transition douce */}
+        <div className="absolute top-0 left-0 right-0 h-24" style={{ background: 'linear-gradient(180deg, var(--cream-deep) 0%, transparent 100%)', opacity: 0.15, pointerEvents: 'none' }} />
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-10 relative">
+          <div className="text-center mb-20 lg:mb-24">
+            <span className="eyebrow" style={{ color: 'var(--ocre)' }}>— VISITE GUIDÉE</span>
+            <h2 className="h-section text-balance mt-6 mx-auto max-w-3xl" style={{ color: 'var(--cream)' }}>
+              L'officine<br/>
+              <em style={{ color: 'var(--ocre)' }}>en images</em>
+            </h2>
+            <div className="mt-8 mx-auto w-16 h-px" style={{ background: 'var(--ocre)', opacity: 0.5 }} />
+            <p className="ff-display italic mt-8 mx-auto max-w-xl text-pretty" style={{ color: 'rgba(244,236,216,0.75)', fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)' }}>
+              Quatre regards sur nos rayons et l'organisation de l'officine, pensée pour faciliter le conseil au quotidien.
+            </p>
           </div>
-          <div className="gallery-bento">
+          <div className="gallery-bento gallery-bento-dark">
             {GALLERY.map((g, i) => (
               <Reveal key={g.src} delay={((i % 4) as 0 | 1 | 2 | 3)} className="gallery-item">
                 <div className="gallery-bg" style={{ backgroundImage: `url('${g.src}')` }} />
-                <div className="absolute bottom-5 left-5 z-10">
-                  <span className="eyebrow rounded-full px-3 py-1.5 inline-block" style={{ background: 'rgba(244,236,216,0.92)', color: 'var(--ink)', fontSize: 9 }}>
+                <div className="absolute bottom-6 left-6 right-6 z-10 flex items-end justify-between">
+                  <span className="ff-display italic text-base" style={{ color: 'var(--cream)' }}>
                     {g.label}
+                  </span>
+                  <span className="ff-display italic" style={{ color: 'rgba(244,236,216,0.55)', fontSize: 14 }}>
+                    {String(i + 1).padStart(2, '0')} / 0{GALLERY.length}
                   </span>
                 </div>
               </Reveal>
@@ -472,7 +483,8 @@ function ServicesSection() {
           </div>
           <div className="lg:col-span-5 lg:pb-4">
             <p className="ff-display text-lg leading-relaxed text-pretty" style={{ color: 'var(--ink-mid)', fontWeight: 300 }}>
-              Vaccinations, dépistages, entretiens pharmaceutiques, accompagnement grossesse, location de matériel médical.
+              Vaccinations, dépistages, entretiens pharmaceutiques, accompagnement grosses
+se, location de matériel médical.
             </p>
           </div>
         </div>

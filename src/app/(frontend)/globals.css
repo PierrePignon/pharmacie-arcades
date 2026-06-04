@@ -311,6 +311,15 @@ html { scroll-behavior: smooth; }
   background: linear-gradient(to top, rgba(26,15,8,0.55) 0%, transparent 55%);
   transition: opacity .4s ease;
 }
+
+/* Mode dark — fond sombre, bordure subtile sur les photos */
+.gallery-bento-dark .gallery-item {
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.5);
+  border: 1px solid rgba(244,236,216,0.06);
+}
+.gallery-bento-dark .gallery-item::after {
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 40%, transparent 70%);
+}
 .gallery-item:hover::after { opacity: 0.85; }
 
 /* ── Promo cards premium ── */
