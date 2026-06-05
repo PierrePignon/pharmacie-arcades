@@ -536,3 +536,35 @@ header:not([data-scrolled="true"]) .nav-link:hover::before {
   background: var(--ink);
   color: var(--cream);
 }
+
+/* === HERO MOBILE — bloc minimal en bas (status + 2 CTAs) === */
+.hero-mobile-status {
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(244, 236, 216, 0.92);
+  backdrop-filter: blur(10px);
+  color: var(--ink);
+  margin-bottom: 16px;
+  box-shadow: 0 6px 18px -8px rgba(0,0,0,0.4);
+}
+.hero-mobile-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-mobile-btn {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  padding: 14px 22px;
+}
+.hero-mobile-btn-whatsapp {
+  background: var(--whatsapp);
+  color: white;
+  border: none;
+}
+.hero-mobile-btn-whatsapp:hover {
+  background: #1eb858;
+  color: white;
+}

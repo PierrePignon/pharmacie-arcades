@@ -19,17 +19,16 @@ export default function Header() {
         background: scrolled ? 'rgba(244,236,216,0.96)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--cream-deep)' : '1px solid transparent',
-        paddingTop: scrolled ? undefined : undefined,
       }}
     >
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
-          <img src="/photos/logo/newlogo-cross.png" alt="Pharmacie des Arcades" className="flex-shrink-0" style={{ width: 44, height: 44, objectFit: 'contain' }} />
-          <span className="flex flex-col leading-tight">
-            <span className="ff-display text-[18px] font-medium tracking-tight" style={{ color: scrolled ? 'var(--ink)' : 'var(--cream)' }}>
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-5 flex items-center justify-between gap-3">
+        <a href="#" className="flex items-center gap-2 sm:gap-3 group min-w-0">
+          <img src="/photos/logo/newlogo-cross.png" alt="Pharmacie des Arcades" className="flex-shrink-0" style={{ width: 36, height: 36, objectFit: 'contain' }} />
+          <span className="flex flex-col leading-tight min-w-0">
+            <span className="ff-display font-medium tracking-tight whitespace-nowrap text-[14px] sm:text-[18px]" style={{ color: scrolled ? 'var(--ink)' : 'var(--cream)' }}>
               Pharmacie des Arcades
             </span>
-            <span className="text-[10px] tracking-[0.25em] uppercase font-medium" style={{ color: scrolled ? 'var(--ink-mid)' : 'rgba(244,236,216,0.85)' }}>
+            <span className="hidden sm:block text-[10px] tracking-[0.25em] uppercase font-medium" style={{ color: scrolled ? 'var(--ink-mid)' : 'rgba(244,236,216,0.85)' }}>
               CHÂTEAUNEUF-LE-ROUGE · PROVENCE
             </span>
           </span>
@@ -42,7 +41,7 @@ export default function Header() {
         </nav>
         <button
           onClick={() => openRdv()}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 shadow-lg transition-all duration-300 btn-glow"
+          className="hidden sm:flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm font-semibold hover:scale-105 shadow-lg transition-all duration-300 btn-glow flex-shrink-0"
           style={{ background: 'var(--green)', color: 'var(--cream)' }}
         >
           Prendre RDV
@@ -51,4 +50,3 @@ export default function Header() {
     </header>
   )
 }
-

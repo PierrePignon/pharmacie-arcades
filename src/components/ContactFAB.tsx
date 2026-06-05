@@ -1,9 +1,21 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { PHARMA, wa } from '@/lib/constants'
 
 export default function ContactFAB() {
   const [open, setOpen] = useState(false)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    // Le FAB n'apparaît qu'après avoir scrollé au-delà du hero
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.6)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  if (!visible) return null
+
   const items = [
     {
       label: 'WhatsApp', sub: 'Réponse en journée',
