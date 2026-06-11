@@ -61,7 +61,7 @@ export default async function Home() {
       <ScrollProgress />
       <SiteChrome />
       {/* Top bar */}
-      <div className="hidden md:block text-xs" style={{ background: 'var(--ink)', color: 'var(--cream)' }}>
+      <div className="hidden md:block text-xs" style={{ background: 'var(--terra-deep)', color: 'var(--cream)' }}>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-2.5 flex items-center justify-between">
           <div className="flex items-center gap-6 opacity-95">
             <StatusBadge variant="inline" />
@@ -81,7 +81,7 @@ export default async function Home() {
       <HeroSection />
 
       {/* Bandeau horaires + pharmacie de garde */}
-      <section className="py-12 lg:py-16" style={{ background: 'var(--ink)', color: 'var(--cream)' }}>
+      <section className="py-12 lg:py-16" style={{ background: 'linear-gradient(135deg, var(--terra-deep) 0%, #4a1d0c 100%)', color: 'var(--cream)' }}>
         <div className="max-w-[1500px] mx-auto px-6 lg:px-10 space-y-10">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-4">
@@ -93,7 +93,7 @@ export default async function Home() {
             <div className="lg:col-span-8">
               <div className="grid sm:grid-cols-3 gap-px" style={{ background: 'rgba(244,236,216,0.18)' }}>
                 {HORAIRES.map((h, i) => (
-                  <div key={i} className="p-6" style={{ background: 'var(--ink)' }}>
+                  <div key={i} className="p-6" style={{ background: 'rgba(122,51,21,0.95)' }}>
                     <span className="eyebrow opacity-60" style={{ fontSize: 10 }}>{h.jour.toUpperCase()}</span>
                     <p className={`ff-display text-xl lg:text-2xl mt-2 leading-tight ${h.closed ? 'opacity-50' : ''}`}>
                       {h.creneaux.split(' · ').map((c, j) => <span key={j}>{c}{j < h.creneaux.split(' · ').length - 1 && <br/>}</span>)}
@@ -149,6 +149,28 @@ export default async function Home() {
             {promos.map((p: any, idx: number) => {
               const imgUrl = p.image?.url || ''
               const delay = ((idx % 4) as 0 | 1 | 2 | 3)
+              // Sépare le titre en deux : italique sur la deuxième partie (style éditorial)
+              // Cherche un point de coupure naturel : virgule, tiret, ou préposition FR
+              let titreStart = p.titre || ''
+              let titreEm = ''
+              if (p.titre) {
+                const patterns = [
+                  /^(.+?),\s+(.+)$/,            // virgule
+                  /^(.+?)\s+—\s+(.+)$/,         // tiret cadratin
+                  /^(.+?)\s+(à\s+.+)$/,         // " à "
+                  /^(.+?)\s+(dès\s+.+)$/,       // " dès "
+                  /^(.+?)\s+(pour\s+.+)$/,      // " pour "
+                  /^(.+?)\s+(de\s+qualité.+)$/, // " de qualité "
+                ]
+                for (const re of patterns) {
+                  const m = p.titre.match(re)
+                  if (m && m[1].length > 6 && m[2].length > 4) {
+                    titreStart = m[1]
+                    titreEm = m[2]
+                    break
+                  }
+                }
+              }
               return (
                 <Reveal key={p.id} delay={delay} className="flex flex-col">
                 <article className="promo-card">
@@ -162,7 +184,14 @@ export default async function Home() {
                   </div>
                   <div className="p-6 flex-1 flex flex-col items-center justify-center text-center">
                     <h3 className="ff-display text-xl lg:text-2xl font-medium leading-tight text-balance" style={{ color: 'var(--ink)' }}>
-                      {p.titre}
+                      {titreEm ? (
+                        <>
+                          {titreStart}<br/>
+                          <em style={{ fontStyle: 'italic', color: 'var(--terra)', fontWeight: 400 }}>{titreEm}</em>
+                        </>
+                      ) : (
+                        p.titre
+                      )}
                     </h3>
                   </div>
                 </article>
@@ -308,13 +337,17 @@ export default async function Home() {
               <Reveal key={p.id} delay={((i % 4) as 0 | 1 | 2 | 3)}>
               <article className="team-card flex flex-col" style={{ marginTop: i % 2 === 1 ? '2.5rem' : '0', opacity: p.upcoming ? 0.55 : 1 }}>
                 <div className={`team-portrait aspect-[4/5] rounded-2xl overflow-hidden mb-5 relative shadow-md ${AVATAR_CLASS[p.colorScheme] || 'avatar-1'} flex items-end justify-center`}>
-                  <svg viewBox="0 0 280 360" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-                    <path d="M 60 360 L 60 290 Q 80 250 140 250 Q 200 250 220 290 L 220 360 Z" fill="#3A2F1E" opacity="0.85" />
-                    <rect x="125" y="220" width="30" height="40" fill="#F2D6B8" opacity="0.7" />
-                    <ellipse cx="140" cy="180" rx="55" ry="65" fill="#F2D6B8" />
-                    <path d="M 85 180 Q 85 110 140 110 Q 195 110 195 180 Q 195 145 175 135 Q 155 130 140 135 Q 110 138 95 155 Q 85 165 85 180 Z" fill="#3A2F1E" />
-                    <text x="20" y="345" fontFamily="Fraunces,serif" fontSize="22" fontWeight="bold" fill="white" opacity="0.6" fontStyle="italic">{p.initials}</text>
-                  </svg>
+                  <img
+                    src={p.genre === 'F' ? '/photos/avatar%20feminin.png' : '/photos/avatar%20masculin.png'}
+                    alt={`Illustration ${p.nom}`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: 'center 30%' }}
+                    loading="lazy"
+                  />
+                  <span className="absolute bottom-3 left-3 z-10 ff-display italic"
+                    style={{ color: 'rgba(255,255,255,0.55)', fontSize: 22, fontWeight: 700 }}>
+                    {p.initials}
+                  </span>
                   <span className="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full px-2.5 py-1 text-[9px] italic font-medium tracking-wider" style={{ color: 'var(--ink-mid)' }}>
                     {p.upcoming ? 'à venir' : 'illustration'}
                   </span>
@@ -331,7 +364,7 @@ export default async function Home() {
       </section>
 
       {/* GALERIE OFFICINE — style exposition */}
-      <section className="py-28 lg:py-40 relative" style={{ background: 'var(--ink)', color: 'var(--cream)' }}>
+      <section className="py-28 lg:py-40 relative" style={{ background: 'linear-gradient(135deg, #2b1709 0%, var(--terra-deep) 60%, #5a2510 100%)', color: 'var(--cream)' }}>
         {/* Texture subtile en haut pour transition douce */}
         <div className="absolute top-0 left-0 right-0 h-24" style={{ background: 'linear-gradient(180deg, var(--cream-deep) 0%, transparent 100%)', opacity: 0.15, pointerEvents: 'none' }} />
         <div className="max-w-[1500px] mx-auto px-6 lg:px-10 relative">
@@ -399,7 +432,7 @@ export default async function Home() {
             </div>
 
             {/* Pharmacie de garde — bloc visible sous la map */}
-            <div className="rounded-3xl p-6 lg:p-8 grid lg:grid-cols-12 gap-6 items-center" style={{ background: 'var(--ink)', color: 'var(--cream)' }}>
+            <div className="rounded-3xl p-6 lg:p-8 grid lg:grid-cols-12 gap-6 items-center" style={{ background: 'linear-gradient(135deg, var(--terra-deep) 0%, #4a1d0c 100%)', color: 'var(--cream)' }}>
               <div className="lg:col-span-1 flex lg:justify-center">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style={{ background: 'rgba(244,236,216,0.1)', color: 'var(--ocre)' }}>☾</div>
               </div>

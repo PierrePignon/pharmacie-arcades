@@ -140,13 +140,13 @@ export const GALLERY = [
 // Équipe — prénoms seulement sur les cartes (sans noms de famille)
 export const EQUIPE = [
   { id: '1', nom: 'Cécile', role: 'Pharmacienne titulaire', specialite: 'PHARMACIENNE TITULAIRE',
-    bio: "Titulaire de l'officine depuis 2003.", initials: 'C', colorScheme: 'terra' },
+    bio: "Titulaire de l'officine depuis 2003.", initials: 'C', colorScheme: 'terra', genre: 'F' },
   { id: '2', nom: 'Pierre-François', role: 'Préparateur', specialite: 'PRÉPARATEUR EN PHARMACIE',
-    bio: "Co-gère l'officine depuis 2003.", initials: 'PF', colorScheme: 'sage' },
+    bio: "Co-gère l'officine depuis 2003.", initials: 'PF', colorScheme: 'sage', genre: 'M' },
   { id: '3', nom: 'Lucie', role: 'Préparatrice', specialite: 'CONSEIL EN OFFICINE',
-    bio: 'Préparatrice en pharmacie.', initials: 'L', colorScheme: 'sand' },
+    bio: 'Préparatrice en pharmacie.', initials: 'L', colorScheme: 'sand', genre: 'F' },
   { id: '4', nom: 'Myriam', role: 'Préparatrice', specialite: 'CONSEIL EN OFFICINE',
-    bio: 'Préparatrice en pharmacie.', initials: 'M', colorScheme: 'ocre' },
+    bio: 'Préparatrice en pharmacie.', initials: 'M', colorScheme: 'ocre', genre: 'F' },
   { id: '5', nom: 'Lisa', role: 'Apprentie préparatrice', specialite: 'EN FORMATION',
-    bio: 'En formation pour devenir préparatrice en pharmacie.', initials: 'L', colorScheme: 'terra' },
+    bio: 'En formation pour devenir préparatrice en pharmacie.', initials: 'L', colorScheme: 'terra', genre: 'F' },
 ]
