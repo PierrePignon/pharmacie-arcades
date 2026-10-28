@@ -514,8 +514,7 @@ function ServicesSection() {
           </div>
           <div className="lg:col-span-5 lg:pb-4">
             <p className="ff-display text-lg leading-relaxed text-pretty" style={{ color: 'var(--ink-mid)', fontWeight: 300 }}>
-              Vaccinations, dépistages, entretiens pharmaceutiques, accompagnement grosses
-se, location de matériel médical.
+              Vaccinations, dépistages, entretiens pharmaceutiques, accompagnement grossesse, location de matériel médical.
             </p>
           </div>
         </div>

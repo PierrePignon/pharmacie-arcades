@@ -70,7 +70,7 @@ export const UNIVERS = [
     eyebrow: 'HYGIÈNE DENTAIRE',
     title: 'Dentaire',
     titleHtml: 'Hygiène<br><em style="color: var(--ocre);">dentaire</em>',
-    desc: "Brosses, dentifrices, bains de bouche, fixateurs prothèses. Sélection couvrant les sensibilités gingivales, les parodontites et les orthodonties.",
+    desc: "Brosses, dentifrices, bains de bouche, fixateurs prothèses. Sélection couvrant les sensibilités gingivales, les parodontites et les appareils orthodontiques.",
     color: 'ocre',
     bgImage: '/photos/MainPhoto/SoinDentaire.png',
     marques: [
