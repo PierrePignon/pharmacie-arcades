@@ -488,9 +488,15 @@ export default async function Home() {
               </ul>
             </div>
           </div>
-          <div className="pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs opacity-50" style={{ borderTop: '1px solid rgba(244,236,216,0.15)' }}>
-            <span>© 2026 {PHARMA.name} — Tous droits réservés</span>
-            <span>Site conforme au Code de déontologie des pharmaciens (R4235) · Site réalisé par <a href="https://lenseigneweb.fr" target="_blank" rel="noopener" className="link-underline">L'enseigne</a></span>
+          <div className="pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs" style={{ borderTop: '1px solid rgba(244,236,216,0.15)' }}>
+            <span style={{ opacity: 0.5 }}>© 2026 {PHARMA.name} — Tous droits réservés</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+              <span style={{ opacity: 0.5 }}>Site conforme au Code de déontologie des pharmaciens (R4235)</span>
+              <a href="https://lenseigneweb.fr" target="_blank" rel="noopener" className="lenseigne-credit" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 12px', border: '1px solid rgba(244,236,216,0.25)', borderRadius: 999, color: 'rgba(244,236,216,0.7)', textDecoration: 'none' }}>
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#FFB661', boxShadow: '0 0 8px rgba(255,182,97,0.8)' }} />
+                Site réalisé par <b style={{ fontWeight: 600, color: '#F4ECD8' }}>L'enseigne</b>
+              </a>
+            </span>
           </div>
         </div>
       </footer>
