@@ -490,7 +490,7 @@ export default async function Home() {
           </div>
           <div className="pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs opacity-50" style={{ borderTop: '1px solid rgba(244,236,216,0.15)' }}>
             <span>© 2026 {PHARMA.name} — Tous droits réservés</span>
-            <span>Site conforme au Code de déontologie des pharmaciens (R4235)</span>
+            <span>Site conforme au Code de déontologie des pharmaciens (R4235) · Site réalisé par <a href="https://lenseigneweb.fr" target="_blank" rel="noopener" className="link-underline">L'enseigne</a></span>
           </div>
         </div>
       </footer>
