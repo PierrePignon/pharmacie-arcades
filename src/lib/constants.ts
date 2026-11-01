@@ -147,4 +147,6 @@ export const EQUIPE = [
     bio: 'Pharmacienne', initials: 'A', colorScheme: 'sand', genre: 'F' },
   { id: '4', nom: 'Myriam', role: 'Préparatrice', specialite: 'CONSEIL EN OFFICINE',
     bio: 'Préparatrice en pharmacie.', initials: 'M', colorScheme: 'ocre', genre: 'F' },
+  { id: '5', nom: 'Chloé', role: 'Préparatrice', specialite: 'CONSEIL EN OFFICINE',
+    bio: 'Préparatrice en pharmacie.', initials: 'C', colorScheme: 'sage', genre: 'F' },
 ]

@@ -43,7 +43,7 @@ const DEMO_PROMOS = [
     commentaire: '', image: { url: '/photos/promo/promo-moustique.jpg', alt: 'Cinq sur Cinq Famille' } },
 ]
 
-// Équipe importée depuis constants.ts (Cécile Pignon + Lucie + Myriam + Lisa)
+// Équipe importée depuis constants.ts (Cécile, Pierre-François, Alice, Myriam, Chloé)
 const DEMO_EQUIPE = EQUIPE
 
 const AVATAR_CLASS: Record<string, string> = {
@@ -332,7 +332,7 @@ export default async function Home() {
               <p className="eyebrow mt-5" style={{ color: 'var(--ink-mid)', fontSize: 10 }}>— CÉCILE et PIERRE-FRANÇOIS PIGNON</p>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {equipe.map((p: any, i: number) => (
               <Reveal key={p.id} delay={((i % 4) as 0 | 1 | 2 | 3)}>
               <article className="team-card flex flex-col" style={{ marginTop: i % 2 === 1 ? '2.5rem' : '0', opacity: p.upcoming ? 0.55 : 1 }}>
